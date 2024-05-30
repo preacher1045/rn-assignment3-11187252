@@ -5,6 +5,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView style={styles.container}>
+
         <View style={styles.header}>
           <View>
             <Text style={styles.heading}>Hello, Devs</Text>
@@ -14,10 +15,41 @@ export default function App() {
             <Image source={require('./assets/profile.png')} style={styles.profileImg}/>
           </View>
         </View>
-        <View>
+
+        <View style={styles.Inputflex}>
           <View style={styles.searchFlex}>
             <Image source={require('./assets/magnifying.png')} style={styles.magnify}/>
             <TextInput style={styles.searchInput} placeholder='search'/>
+          </View>
+          <View style={styles.filterIcon}>
+            <Image source={require('./assets/filter.png')} style={styles.filterImage} />
+          </View>
+        </View>
+
+        <View>
+          <Text>Cartegories</Text>
+        </View>
+        <View>
+          <View>
+            <Text>Exercise</Text>
+          </View>
+          <View>
+            <Text>Study</Text>
+          </View>
+        </View>
+
+        <View>
+          <Text>Ongoing tasks</Text>
+        </View>
+        <View>
+          <View>
+            <Text>Mobile App Development</Text>
+          </View>
+          <View>
+            <Text>Web Development</Text>
+          </View>
+          <View>
+            <Text>Push ups</Text>
           </View>
         </View>
       </ScrollView>
@@ -78,6 +110,12 @@ const styles = StyleSheet.create({
 
   },
 
+  Inputflex: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
   magnify: {
     width: 16,
     height: 16,
@@ -87,5 +125,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
     paddingHorizontal: 5,
+  },
+
+  filterIcon: {
+    backgroundColor: '#F0522F',
+    width: 50,
+    height: 50,
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    marginTop: 39,
+  },
+
+  filterImage: {
+    width: 32,
+    height: 32,
   },
 });
