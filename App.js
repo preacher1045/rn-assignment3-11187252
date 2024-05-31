@@ -1,12 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView,ScrollView, Image, TextInput } from 'react-native';
+import {
+    StyleSheet, 
+    Text, 
+    View, 
+    SafeAreaView, 
+    Image, 
+    TextInput, 
+    TouchableOpacity,
+    FlatList,
+  } from 'react-native';
+
+  import {Data} from './constants/data';
 
 export default function App() {
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity style={styles.item}>
+      <Text style={styles.itemText}>{item.title}</Text>
+      <Text style={styles.subText}>12 task</Text>
+      <Image source={item.image} style={styles.itemImage} />
+    </TouchableOpacity>
+  );
+
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container}>
-
-        <View style={styles.header}>
+      <View style={styles.container}>
+        
+      <View style={styles.header}>
           <View>
             <Text style={styles.heading}>Hello, Devs</Text>
             <Text style={styles.subHeading}>14 tasks today</Text>
@@ -21,38 +41,29 @@ export default function App() {
             <Image source={require('./assets/magnifying.png')} style={styles.magnify}/>
             <TextInput style={styles.searchInput} placeholder='search'/>
           </View>
-          <View style={styles.filterIcon}>
+          <TouchableOpacity style={styles.filterIcon}>
             <Image source={require('./assets/filter.png')} style={styles.filterImage} />
-          </View>
+          </TouchableOpacity>
         </View>
 
-        <View>
-          <Text>Cartegories</Text>
-        </View>
-        <View>
-          <View>
-            <Text>Exercise</Text>
+        <View style={styles.categories}>
+          <View style={styles.cartBox}>
+            <Text style={styles.cartText}>Categories</Text>
           </View>
-          <View>
-            <Text>Study</Text>
-          </View>
+
+              <FlatList
+                data={Data}
+                renderItem={renderItem}
+                keyExtractor={item => item.id.toString()}
+                horizontal={true}
+                showsHorizontalScrollIndicator={true}
+                contentContainerStyle={styles.flatListContent}
+              />
+
         </View>
 
-        <View>
-          <Text>Ongoing tasks</Text>
-        </View>
-        <View>
-          <View>
-            <Text>Mobile App Development</Text>
-          </View>
-          <View>
-            <Text>Web Development</Text>
-          </View>
-          <View>
-            <Text>Push ups</Text>
-          </View>
-        </View>
-      </ScrollView>
+        <StatusBar style="auto" />
+      </View>
     </SafeAreaView>
   );
 }
@@ -73,7 +84,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 70,
+    marginTop: 57,
   },
 
   heading: {
@@ -101,7 +112,7 @@ const styles = StyleSheet.create({
   searchFlex: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: 260,
+    flex: .9,
     height: 43,
     borderRadius: 14,
     marginTop: 40,
@@ -140,5 +151,51 @@ const styles = StyleSheet.create({
   filterImage: {
     width: 32,
     height: 32,
+  },
+
+  categories: {
+    marginTop: 30.9,
+    // paddingHorizontal: 10,
+  },
+
+  cartBox: {
+    padding: 6,
+  },
+
+  cartText: {
+    fontSize: 20,
+    fontWeight: '400',
+  },
+
+  item: {
+    width: 160,
+    height: 210,
+    marginTop: 20,
+    marginHorizontal: 10,
+    borderRadius: 15,
+    backgroundColor: '#fff',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+  },
+
+  itemImage: {
+    width: 107,
+    height: 110,
+    alignSelf: 'center',
+    paddingVertical: 10,
+  },
+
+  itemText: {
+    fontSize: 16,
+    fontWeight: '700',
+  },
+
+  subText: {
+    fontSize: 12,
+    fontWeight: '400'
+  },
+
+  flatListContent: {
+    paddingVertical: 10,
   },
 });
