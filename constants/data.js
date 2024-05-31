@@ -33,11 +33,70 @@ const Data = [
         title: "Tokens",
         image: require('../assets/token.png'),
     },
-    // {
-    //     id: 8,
-    //     title: "Study",
-    //     image: require('../asserts/study.png'),
-    // },
+    {
+        id: 8,
+        title: "Study music",
+        image: require('../assets/airpods.png'),
+    },
 ]
 
-export {Data};
+const ongoingTask = [
+    {
+        id: 1,
+        title:"Mobile App Development"
+    },
+    {
+        id: 2,
+        title:"Web Development"
+    },
+    {
+        id: 4,
+        title:"Push ups"
+    },
+    {
+        id: 5,
+        title:"Dance Lesson"
+    },  {
+        id: 6,
+        title:"Itallian Paster"
+    },
+    {
+        id: 7,
+        title:"Funnel Cake"
+    },
+    {
+        id: 8,
+        title:"Introduction to  Python"
+    },
+    {
+        id: 9,
+        title:"Intoduction to C++"
+    },
+    {
+        id: 10,
+        title:"C++ Exercise"
+    },
+    {
+        id: 11,
+        title:"Study"
+    },
+    {
+        id: 12,
+        title:"Token Generation"
+    },
+    {
+        id: 13,
+        title:"Referal"
+    },
+    {
+        id: 14,
+        title:"Mohecan cocktail"
+    },
+    {
+        id: 15,
+        title:"Introduction to Data Analyst"
+    }
+
+]
+
+export {Data, ongoingTask};

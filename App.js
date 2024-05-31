@@ -10,7 +10,7 @@ import {
     FlatList,
   } from 'react-native';
 
-  import {Data} from './constants/data';
+  import {Data, ongoingTask} from './constants/data';
 
 export default function App() {
 
@@ -19,6 +19,12 @@ export default function App() {
       <Text style={styles.itemText}>{item.title}</Text>
       <Text style={styles.subText}>12 task</Text>
       <Image source={item.image} style={styles.itemImage} />
+    </TouchableOpacity>
+  );
+
+  const renderOngoingTask = ({item}) => (
+    <TouchableOpacity style={styles.items}>
+      <Text style={styles.ongoingTask}>{item.title}</Text>
     </TouchableOpacity>
   );
 
@@ -51,15 +57,29 @@ export default function App() {
             <Text style={styles.cartText}>Categories</Text>
           </View>
 
-              <FlatList
-                data={Data}
-                renderItem={renderItem}
-                keyExtractor={item => item.id.toString()}
-                horizontal={true}
-                showsHorizontalScrollIndicator={true}
-                contentContainerStyle={styles.flatListContent}
-              />
+          <FlatList
+            data={Data}
+            renderItem={renderItem}
+            keyExtractor={item => item.id.toString()}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.flatListContent}
+          />
+        </View>
 
+        <View>
+          <View>
+            <Text style={styles.completeTask}>Ongoing Task</Text>
+          </View>
+
+          <FlatList
+            data={ongoingTask}
+            renderItem={renderOngoingTask}
+            keyExtractor={item => item.id.toString()}
+            vertical={true}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle = {styles.flatListContent}
+          />
         </View>
 
         <StatusBar style="auto" />
@@ -158,17 +178,13 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 10,
   },
 
-  cartBox: {
-    padding: 6,
-  },
-
   cartText: {
-    fontSize: 20,
-    fontWeight: '400',
+    fontSize: 26,
+    fontWeight: '500',
   },
 
   item: {
-    width: 160,
+    width: 209,
     height: 210,
     marginTop: 20,
     marginHorizontal: 10,
@@ -177,6 +193,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
   },
+  
 
   itemImage: {
     width: 107,
@@ -197,5 +214,29 @@ const styles = StyleSheet.create({
 
   flatListContent: {
     paddingVertical: 10,
+  },
+
+  completeTask: {
+    fontSize: 26,
+    fontWeight: '500',
+    marginTop: 10,
+  },
+
+  items: {
+    width: 360,
+    height: 150,
+    marginTop: 20,
+    marginHorizontal: 10,
+    borderRadius: 15,
+    backgroundColor: '#fff',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+  },
+
+  ongoingTask: {
+    fontSize: 19,
+    fontWeight: '700',
+    // alignSelf: 'center'
+    paddingVertical: 30,
   },
 });
