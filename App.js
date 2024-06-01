@@ -231,6 +231,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 20,
     paddingVertical: 20,
+    borderColor: '#bf833d',
+    borderWidth: 1,
   },
 
   ongoingTask: {
