@@ -1,6 +1,6 @@
 const Data = [
     {   id: 1,
-        title: "Excercise",
+        title: "Exercise",
         image: require('../assets/exercise.png'),
     },
     {
